@@ -1,17 +1,16 @@
 #!/usr/bin/python3
 '''
-Module contains a function for writing serialized data to a text file
+Module contains function for creating python object from json file
 '''
 import json
 
 
-def save_to_json_file(my_obj, filename):
+def load_from_json_file(filename):
     '''
-    Writes serialized data to a text file
+    Creates a Python object from a json file
     Args:
-        my_obj :The python object to serialize
-        filename: The name of the file to write to
+        filename (string): The name of the json file to be read
     '''
-    with open(filename, mode='w', encoding='utf-8') as f:
-        json_str = json.dumps(my_obj)
-        f.write(json_str)
+    with open(filename, encoding='utf-8') as f:
+        json_string = f.read()
+        return json.loads(json_string)
